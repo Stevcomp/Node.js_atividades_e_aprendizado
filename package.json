@@ -1,0 +1,15 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "argumentos.js",
+  "scripts": {
+    "start": "node argumentos.js",
+    "check": "node --check arguments.js"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
