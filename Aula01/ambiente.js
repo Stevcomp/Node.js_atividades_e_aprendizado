@@ -1,9 +1,10 @@
+process.loadEnvFile('.env');
+
 const obrigatorias = ['NOME_ALUNO', 'TURMA'];
-const ausentes = obrigatorias.filter((nome) => !process.env[nome]?.trim()
+const ausentes = obrigatorias.filter((nome) => !process.env[nome]?.trim());
 // (cond) ? true : false
 // if (cond) { true } else { false }
 
-);
 
 if (ausentes.length) {
     console.error(`Configure: ${ausentes.join(',')}`);
