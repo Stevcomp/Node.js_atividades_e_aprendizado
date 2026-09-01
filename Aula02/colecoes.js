@@ -16,7 +16,7 @@ const perifericos = produtos.filter(
 console.log(perifericos); // Saída: Somente os produtos da categoria 'Periféricos' [{ id: 1, nome: 'Mouse', preco: 79.99, categoria: 'Periféricos' }, { id: 3, nome: 'Teclado', preco: 119.99, categoria: 'Periféricos' }]
 
 
-// Encontrar o produto com id 2 usando o método find() que busca o primeiro elemento de um array que satisfaz uma condição especificada:
+// Encontrar o produto com id 2 usando o método find() que busca o somente 1 elemento de um array que satisfaz uma condição especificada:
 const monitor = produtos.find(({ id }) => id === 2);
 console.log(monitor); // Saída: O produto com id 2 { id: 2, nome: 'Monitor', preco: 899.99, categoria: 'Vídeos' }
 
