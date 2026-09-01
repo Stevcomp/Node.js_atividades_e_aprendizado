@@ -5,7 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js .env",
-    "check": "node --check app.js"
+    "check": "node --check app.js",
+    "diagnostico": "node app.js",
+    "produto_ausente": "node app.js .env 999",
+    "id_invalido": "node app.js .env abc"
+
   },
   "keywords": [],
   "author": "",
