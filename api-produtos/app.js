@@ -1,15 +1,16 @@
-import { buscarProdutoPorId } from './catalogo/consulta.js';
-import { carregarAmbiente, exibirdiagnostico } from './config/ambiente.js';
+import { buscarProdutoPorId, listarCategorias } from './catalogo/consulta.js';
+import { carregarAmbiente, exibirDiagnostico } from './config/ambiente.js';
 import { formatarMoeda } from './util/formatarMoeda.js';
+
 
 async function executar() {
     try {
         const configuracao = carregarAmbiente(process.argv[2]);
-        const idSolicitado = carregarAmbiente(process.argv[3]);
+        const idSolicitado = Number(process.argv[3] || "1");
         if (!Number.isInteger((idSolicitado))) {
-            throw new Error("Informe um indentificador inteiro para o produto");
+            throw new Error("Informe um indentificador inteiro");
         }
-        exibirdiagnostico(configuracao);
+        exibirDiagnostico(configuracao);
         const [produto, categorias] = await Promise.all([
             buscarProdutoPorId(idSolicitado),
             listarCategorias()
@@ -23,13 +24,16 @@ async function executar() {
                 estoque: produto.estoque,
                 categoria: produto.categoria,
                 valorEmEstoque: produto.calcularValorEmEstoque(),
-                valorEmEstoqueFormatado: formatarMoeda(produto.calcularValorEmEstoque()),
-                valorComDesconto: produto.calcularValorComDesconto(10),
-                valorComDescontoFormatado: formatarMoeda(produto.calcularValorComDesconto())
+                valorEmEstoqueFormatado: formatarMoeda(produto.calcularValorEmEstoque())
             },
             categorias
         });
     } catch (erro) {
         console.error(erro.message);
+        process.exitCode = 1;
     }
 }
+executar();
+
+
+

@@ -24,7 +24,7 @@ export function carregarAmbiente(arquivoDeConfiguracao) {
     }
 
 }
-export function exibirdiagnostico(configuracao) {
+export function exibirDiagnostico(configuracao) {
     console.table({
         estudante: configuracao.nomeAluno,
         turma: configuracao.turma,
