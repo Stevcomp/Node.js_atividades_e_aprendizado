@@ -5,7 +5,7 @@ import { basename, dirname, join } from 'node:path';
 export async function lerJson(caminho) {
     let texto;
     try {
-        texto - await readFile(caminho, 'utf8');
+        texto = await readFile(caminho, 'utf8');
     } catch (erro) {
         if (erro.code === 'ENOENT') return [];
         throw erro;
