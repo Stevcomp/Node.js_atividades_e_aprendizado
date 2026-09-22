@@ -3,18 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "private": true,
-  "type": "module",
   "scripts": {
-    "start": "node app.js .env listar",
-    "buscar": "node app.js .env buscar",
-    "categorias": "node app.js .env categorias",
-    "check": "node scripts/check.js",
-    "diagnostico": "node app.js",
-    "produto-ausente": "node app.js .env buscar 999",
-    "id-invalido": "node app.js .env buscar abc"
+    "start": "node server.js"
+    
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
