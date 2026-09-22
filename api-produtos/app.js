@@ -1,5 +1,5 @@
 import express from 'express';
-import { produtoRoutes } from './routes/produtoRoutes';
+import { produtoRoutes } from './routes/produtoRoutes.js';
 
 export const app = express();
 
@@ -20,5 +20,5 @@ app.use((req, res) => {
 
 app.use((erro, req, res, _next) => {
   console.error('Erro de Sistema: ', erro.message)
-  res.status(500).json({ erro: 'Falha interna do servidor, favor caçar oque fazer' })
+  res.status(500).json({ erro: 'Falha interna do servidor' })
 });

@@ -1,14 +1,11 @@
-import express from 'express';
+import { carregarAmbiente } from './config/ambiente.js';
 
-const app = express();
-const port = 3000;
+const config = carregarAmbiente('.env');
 
-app.get('/', (req, res) => {
-    res.send('<h1>Olá, Mundo, meu Primeiro servidor Web!!!</h1>');
-});
+const { app } = await import('./app.js');
+const porta = config.port || 3000;
 
 
-
-app.listen(port, () => {
-    console.log(`Servidor Rodando em: http://localhost:${port}`);
+app.listen(porta, () => {
+    console.log(`Servidor Rodando em: http://localhost:${porta}`);
 });
