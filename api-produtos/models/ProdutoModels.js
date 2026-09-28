@@ -8,5 +8,10 @@ export function criaProdutoModel({ pool }) {
         if (linhas.legth === 0) return null;
         return {...linhas[0], preco: Number(linhas[0].preco)};
     }
+    async function criar(produto) {
+        const sql = 'INSERT INTO produtos (nome, preco, estoque, categoria) VALUES (?, ?, ?, ?)';
+        const valores = [produto.nome, produto.preco, produto.estoque, produto.categoria];
+        const [resultado] = await pool.query(sql, valores)
+    }
 }
 
