@@ -11,9 +11,9 @@ export const app = express();
 app.use(express.json());
 
 const pool = criarPool();
-const ProdutoModel = criarProdutoModel({ pool });
-const ProdutoService = criarProdutoService({ ProdutoModel });
-const produtoController = criarProdutoController({ ProdutoService });
+const produtoModel = criarProdutoModel({ pool });
+const produtoService = criarProdutoService({ produtoModel });
+const produtoController = criarProdutoController({ produtoService });
 const produtoRoutes = criarProdutoRoutes({ produtoController });
 
 app.get('/api/check', (req, res) => {

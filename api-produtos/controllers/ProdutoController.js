@@ -1,4 +1,4 @@
-export function criarProdutoController({ ProdutoServer }) {
+export function criarProdutoController({ produtoService }) {
     async function listar(req, res, next) {
         try {
             const produtos = await produtoService.listar();
@@ -13,7 +13,7 @@ export function criarProdutoController({ ProdutoServer }) {
             const produto = await produtoService.buscarPorId(req.params.id);
             res.status(200).json({ sucesso: true, dados: produto })
         } catch (erro) {
-            if (erro instanceof TypeError)
+            if (erro instanceof TypeError) 
                 return res.status(400).json({ erro: erro.message });
             if (erro.message.includes('Não encontrado'))
                 return res.status(404).json({ erro: erro.message });

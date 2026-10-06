@@ -1,8 +1,8 @@
 import Produto from '../models/Produto.js';
 
-export function criarProdutoService({ ProdutoModel }) {
+export function criarProdutoService({ produtoModel }) {
     async function listar() {
-        return ProdutoMode.listarTodos();
+        return produtoModel.listarTodos();
     }
 
     async function buscarPorId(idRecebido) {
@@ -11,7 +11,7 @@ export function criarProdutoService({ ProdutoModel }) {
             throw new TypeError('ID dev ser um número inteiro positivo');
         }
 
-        const produto = await ProdutoModel.buscarPorId(id);
+        const produto = await produtoModel.buscarPorId(id);
         if (!produto) throw new Error(`Produto ${id} não encontrado`);
         return produto;
 
@@ -19,7 +19,7 @@ export function criarProdutoService({ ProdutoModel }) {
 
     async function criar(dados) {
         const produto = new Produto({ id: 1, ...dados });
-        return ProdutoModel.criar({
+        return produtoModel.criar({
             nome: produto.nome,
             preco: produto.preco,
             estoque: produto.estoque,
