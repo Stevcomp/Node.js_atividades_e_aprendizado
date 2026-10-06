@@ -1,14 +1,24 @@
 import express from 'express';
-import { produtoRoutes } from './routes/produtoRoutes.js';
+import { criarPool } from './config/database.js';
+import { criarProdutoModel } from './models/ProdutoModels.js';
+import { criarProdutoService } from './services/ProdutoService.js';
+import { criarProdutoController } from './controllers/ProdutoController.js';
+import { criarProdutoRoutes } from './routes/produtoRoutes.js';
 
 export const app = express();
 
 // Middleware: ensina o Express a ler o corpo da requisição em JSON
 app.use(express.json());
 
+const pool = criarPool();
+const ProdutoModel = criarProdutoModel({ pool });
+const ProdutoService = criarProdutoService({ ProdutoModel });
+const produtoController = criarProdutoController({ ProdutoService });
+const produtoRoutes = criarProdutoRoutes({ produtoController });
+
 app.get('/api/check', (req, res) => {
   res.status(200).json(
-    {status:'ok', mensagem: 'Servidor Funcionando via HTTP!'}
+    { status: 'ok', mensagem: 'Servidor Funcionando via HTTP!' }
   );
 });
 
