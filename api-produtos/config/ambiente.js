@@ -1,5 +1,5 @@
-const nomesObrigatorios = ['PORT', 'DB_HOST', 'DB_USER', 'DB_PORT', 'DB_NAME'];
-// DB_PASS ficara de fora, pois ele não aceitara senha vazia (""), que é o padrão XAMPP
+const nomesObrigatorios = ['PORT', 'DB_HOST', 'DB_PORT', 'DB_USER', 'DB_NAME'];
+// DB_PASS: Deixaremos de fora, pois ele não aceitará senha vazia(""), que é o padrão do XAMPP, por exemplo
 
 export function carregarAmbiente(arquivoDeConfiguracao) {
   if (arquivoDeConfiguracao) {
